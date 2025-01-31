@@ -5,11 +5,11 @@ using UnityEngine;
 public class ObstacleSpawner : MonoBehaviour
 {
     public GameObject[] obstacles;
-    GameObject lastObs;
+    public GameObject lastObs;
 
     GameObject player;
 
-    bool isDoing;
+    public bool isDoing;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +30,7 @@ public class ObstacleSpawner : MonoBehaviour
         lastObs = clone;
         if (clone.transform.position.x < player.transform.position.x + 100)
         {
+            
             CreateObstacle();
         }
         else

@@ -78,9 +78,9 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (rb.velocity.x < 3 && !Input.GetKey(KeyCode.D) && isPlayer1 || rb.velocity.x < 3 && !Input.GetKey(KeyCode.A) && !isPlayer1)
+        if (rb.velocity.x < 3 /*&& !Input.GetKey(KeyCode.D) && isPlayer1 || rb.velocity.x < 3 && !Input.GetKey(KeyCode.A) && !isPlayer1*/)
         {
-            rb.velocity = new Vector3(2, rb.velocity.y, rb.velocity.z);
+            rb.velocity = new Vector3(4, rb.velocity.y, rb.velocity.z);
         }
 
 
