@@ -15,7 +15,7 @@ public class FloorMaker : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(hitTimes == 5)
+        if(hitTimes == 5)   
         {
             Destroy(this.gameObject);
         }

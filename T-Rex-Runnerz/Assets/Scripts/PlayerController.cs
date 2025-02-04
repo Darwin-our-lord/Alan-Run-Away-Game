@@ -18,11 +18,11 @@ public class PlayerController : MonoBehaviour
 
     float maxdistance = 50;
     float walkSpeed = 0.02f;
-    float jumpSpeed = 7;
+    float jumpSpeed = 7f;
 
     bool canJump;
     bool canThrow;
-    
+    Color startColor;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
         rend = GetComponent<SpriteRenderer>();
 
         StartCoroutine(waitAndBanana());
+        startColor = this.gameObject.GetComponent<SpriteRenderer>().color;
     }
 
     // Update is called once per frame
@@ -55,12 +56,16 @@ public class PlayerController : MonoBehaviour
                 rb.velocity += new Vector3(walkSpeed,0,0);
 
             }
-
+            if (Input.GetKey(KeyCode.Space))
+            {
+                rb.AddForce(new Vector3(0,jumpSpeed,0),ForceMode.Impulse);
+            }
+            /*
             if (Input.GetKey(KeyCode.Space) && canJump)
             {
                 rb.velocity = new Vector3(rb.velocity.x, jumpSpeed, rb.velocity.z);
                 canJump = false;
-            }
+            }*/
             if (Input.GetKey(KeyCode.F) && canThrow)
             {
                 Instantiate(bananaPrefab, new Vector3(transform.position.x, -4.45f, 0), Quaternion.identity);
@@ -87,7 +92,7 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.S) && canThrow)
             {
-                Instantiate(bananaPrefab, new Vector3(transform.position.x, -5.45f, 1), Quaternion.identity);
+                Instantiate(bananaPrefab, new Vector3(transform.position.x, -3.65f, 1), Quaternion.identity);
                 canThrow = false;
                 StartCoroutine(waitAndBanana());
 
@@ -114,8 +119,8 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(3);
         this.gameObject.GetComponent<SpriteRenderer>().color= Color.yellow;
         canThrow = true;
-        yield return new WaitForSeconds(0.3f);
-        this.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        yield return new WaitForSeconds(0.03f);
+        this.gameObject.GetComponent<SpriteRenderer>().color = startColor;
 
     }
 
