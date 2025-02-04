@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public GameObject winUI;
     public GameObject bananaPrefab;
 
-    float maxdistance = 50;
+    float maxdistance = 45;
     float walkSpeed = 0.02f;
     float jumpSpeed = 7f;
 
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
 
             }
             
-            if (Input.GetKey(KeyCode.Space) && canJump)
+            if (Input.GetKey(KeyCode.Space) && canJump && !ani.GetBool("IsCrouch"))
             {
                 rb.velocity = new Vector3(rb.velocity.x, jumpSpeed, rb.velocity.z);
                 canJump = false;
@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
                 canThrow = false;
                 StartCoroutine(waitAndBanana());
             }
-
+                ani.SetBool("IsCrouch", Input.GetKey(KeyCode.V));
         }
 
         if (!isPlayer1)
@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
 
             }
 
-            if (Input.GetKey(KeyCode.LeftShift) && canJump)
+            if (Input.GetKey(KeyCode.LeftShift) && canJump && !ani.GetBool("IsCrouch"))
             {
                 rb.velocity = new Vector3(rb.velocity.x, jumpSpeed, rb.velocity.z);
                 canJump = false;
@@ -93,12 +93,13 @@ public class PlayerController : MonoBehaviour
                 canThrow = false;
                 StartCoroutine(waitAndBanana());
 
-            }
+            }   
+            ani.SetBool("IsCrouch", Input.GetKey(KeyCode.X));
         }
 
         if (rb.velocity.x < 3)
         {
-            rb.velocity = new Vector3(4, rb.velocity.y, rb.velocity.z);
+            rb.velocity = new Vector3(4, 0.00001f, rb.velocity.z);
         }
 
 
@@ -127,9 +128,11 @@ public class PlayerController : MonoBehaviour
         winUI.SetActive(true);
         Time.timeScale = 0;
         
-
-
         if (winnerPlayer1) winText.GetComponent<TMP_Text>().text = "player one won..";
         if (!winnerPlayer1) winText.GetComponent<TMP_Text>().text = "player two won..";
+
+
+
+
     }
 }

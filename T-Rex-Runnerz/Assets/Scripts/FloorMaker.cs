@@ -15,7 +15,7 @@ public class FloorMaker : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(hitTimes == 6)   
+        if(hitTimes == 7)   
         {
             Destroy(this.gameObject);
         }
@@ -26,7 +26,6 @@ public class FloorMaker : MonoBehaviour
                 clone = Instantiate(floorPrefab, transform.position + new Vector3(50, 0, 0), Quaternion.identity);
                 clone.name = "Floor";
             }
-            Debug.LogWarning(other.gameObject.name+"    hit this shi");
             hitTimes++;
         }
     }

@@ -9,6 +9,9 @@ public class CameraController : MonoBehaviour
 
     GameObject player1;
     GameObject player2;
+
+    float duration = 0.3f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,9 +35,9 @@ public class CameraController : MonoBehaviour
         {
             zoomScale = 3;
         }
-        if (zoomScale > 12)
+        if (zoomScale > 11)
         {
-            zoomScale = 12;
+            zoomScale = 11;
         }
         cameraM.orthographicSize = zoomScale;
 
@@ -49,5 +52,19 @@ public class CameraController : MonoBehaviour
 
         transform.position = targetpos;
 
+    }
+
+    public IEnumerator Shaking()
+    {
+        Vector3 startPosition = transform.position;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            transform.position = startPosition + Random.insideUnitSphere/2;
+            yield return null;
+        }
+        transform.position = startPosition;
     }
 }
