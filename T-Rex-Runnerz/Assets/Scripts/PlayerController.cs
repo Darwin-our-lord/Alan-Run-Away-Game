@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public bool isPlayer1;
 
     public GameObject winText;
+    public GameObject winUI;
     public GameObject bananaPrefab;
 
     float maxdistance = 50;
@@ -81,7 +82,7 @@ public class PlayerController : MonoBehaviour
 
             }
 
-            if (Input.GetKey(KeyCode.LeftControl) && canJump)
+            if (Input.GetKey(KeyCode.LeftShift) && canJump)
             {
                 rb.velocity = new Vector3(rb.velocity.x, jumpSpeed, rb.velocity.z);
                 canJump = false;
@@ -115,7 +116,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(3);
         this.gameObject.GetComponent<SpriteRenderer>().color= Color.yellow;
         canThrow = true;
-        yield return new WaitForSeconds(0.03f);
+        yield return new WaitForSeconds(0.1f);
         this.gameObject.GetComponent<SpriteRenderer>().color = startColor;
 
     }
@@ -123,12 +124,12 @@ public class PlayerController : MonoBehaviour
 
     public void Win(bool winnerPlayer1)
     {
-        winText.SetActive(true);
-
+        winUI.SetActive(true);
+        Time.timeScale = 0;
         
 
 
-        if (winnerPlayer1) winText.GetComponent<TMP_Text>().text = "player one won..(red)";
-        if (!winnerPlayer1) winText.GetComponent<TMP_Text>().text = "player two won..(blue)";
+        if (winnerPlayer1) winText.GetComponent<TMP_Text>().text = "player one won..";
+        if (!winnerPlayer1) winText.GetComponent<TMP_Text>().text = "player two won..";
     }
 }

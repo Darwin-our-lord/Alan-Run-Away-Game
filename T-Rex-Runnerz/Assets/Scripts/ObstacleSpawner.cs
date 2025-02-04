@@ -23,7 +23,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     void CreateObstacle()
     {
-        GameObject clone = Instantiate(obstacles[Random.Range(0,obstacles.Length)],new Vector3(lastObs.transform.position.x + Random.Range(15,50), -3.9f,0),Quaternion.identity);
+        GameObject clone = Instantiate(obstacles[Random.Range(0,obstacles.Length)],new Vector3(lastObs.transform.position.x + Random.Range(1,40), -3.9f,0),Quaternion.identity);
 
 
         lastObs = clone;
