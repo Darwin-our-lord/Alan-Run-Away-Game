@@ -14,13 +14,14 @@ public class PlayerController : MonoBehaviour
     public bool isPlayer1;
 
     public GameObject winText;
+    public GameObject bananaPrefab;
 
     float maxdistance = 50;
-    float walkSpeed = 0.01f;
+    float walkSpeed = 0.02f;
     float jumpSpeed = 7;
 
-    public bool canJump;
-
+    bool canJump;
+    bool canThrow;
     
     // Start is called before the first frame update
     void Start()
@@ -29,10 +30,11 @@ public class PlayerController : MonoBehaviour
         ani = GetComponent<Animator>();
         rend = GetComponent<SpriteRenderer>();
 
+        StartCoroutine(waitAndBanana());
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
         GameObject player2 = GameObject.FindGameObjectWithTag("Player2");
@@ -54,11 +56,18 @@ public class PlayerController : MonoBehaviour
 
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && canJump)
+            if (Input.GetKey(KeyCode.Space) && canJump)
             {
                 rb.velocity = new Vector3(rb.velocity.x, jumpSpeed, rb.velocity.z);
                 canJump = false;
             }
+            if (Input.GetKey(KeyCode.F) && canThrow)
+            {
+                Instantiate(bananaPrefab, new Vector3(transform.position.x, -4.45f, 0), Quaternion.identity);
+                canThrow = false;
+                StartCoroutine(waitAndBanana());
+            }
+
         }
 
         if (!isPlayer1)
@@ -71,14 +80,21 @@ public class PlayerController : MonoBehaviour
 
             }
 
-            if (Input.GetKeyDown(KeyCode.LeftControl) && canJump)
+            if (Input.GetKey(KeyCode.LeftControl) && canJump)
             {
                 rb.velocity = new Vector3(rb.velocity.x, jumpSpeed, rb.velocity.z);
                 canJump = false;
             }
+            if (Input.GetKey(KeyCode.S) && canThrow)
+            {
+                Instantiate(bananaPrefab, new Vector3(transform.position.x, -5.45f, 1), Quaternion.identity);
+                canThrow = false;
+                StartCoroutine(waitAndBanana());
+
+            }
         }
 
-        if (rb.velocity.x < 3 /*&& !Input.GetKey(KeyCode.D) && isPlayer1 || rb.velocity.x < 3 && !Input.GetKey(KeyCode.A) && !isPlayer1*/)
+        if (rb.velocity.x < 3)
         {
             rb.velocity = new Vector3(4, rb.velocity.y, rb.velocity.z);
         }
@@ -92,6 +108,17 @@ public class PlayerController : MonoBehaviour
             canJump = true;
         }
     }
+
+    IEnumerator waitAndBanana()
+    {
+        yield return new WaitForSeconds(3);
+        this.gameObject.GetComponent<SpriteRenderer>().color= Color.yellow;
+        canThrow = true;
+        yield return new WaitForSeconds(0.3f);
+        this.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+
+    }
+
 
     public void Win(bool winnerPlayer1)
     {

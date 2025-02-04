@@ -520,7 +520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer1: 0
   winText: {fileID: 224609933}
-  canJump: 0
+  bananaPrefab: {fileID: 5501298366201499625, guid: 19f8ddafa9e9d644ebb893f6d6a0af77, type: 3}
 --- !u!212 &786895719
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -764,7 +764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer1: 1
   winText: {fileID: 224609933}
-  canJump: 0
+  bananaPrefab: {fileID: 5501298366201499625, guid: 19f8ddafa9e9d644ebb893f6d6a0af77, type: 3}
 --- !u!212 &817863820
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -959,6 +959,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacles:
   - {fileID: 671816181060082082, guid: 77e2844454992a3428995a90d4e233f6, type: 3}
+  lastObs: {fileID: 0}
+  lastObsLocation: 0
 --- !u!1001 &1260494165
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -28,22 +28,22 @@ public class CameraController : MonoBehaviour
         {
             zoomScale = -zoomScale;
         }
-        if (zoomScale < 4)
+        if (zoomScale < 6)
         {
-            zoomScale = 4;
+            zoomScale = 6;
         }
-        if (zoomScale > 50)
+        if (zoomScale > 20)
         {
-            zoomScale = 50;
+            zoomScale = 20;
         }
         cameraM.orthographicSize = zoomScale;
 
 
 
         Vector3 targetpos = (player1.transform.position + player2.transform.position)/2;
-        
-        if(zoomScale > 30) targetpos.x += 3f;
-        if (zoomScale > 47) targetpos.x+= zoomScale/5;
+        if (zoomScale < 30) targetpos.x += 1f;
+        if (zoomScale > 30) targetpos.x += 3f;
+        if (zoomScale > 47) targetpos.x += 5f;
 
         targetpos = new Vector3(targetpos.x, targetpos.y, -10);
 
