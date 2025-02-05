@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
 
         if (rb.velocity.x < 3)
         {
-            rb.velocity = new Vector3(4, 0.00001f, rb.velocity.z);
+            rb.velocity = new Vector3(4, 1f, rb.velocity.z);
         }
 
 
