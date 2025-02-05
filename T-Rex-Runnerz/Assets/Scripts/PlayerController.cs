@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
         GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
         GameObject player2 = GameObject.FindGameObjectWithTag("Player2");
         float distance = player1.gameObject.transform.position.x - player2.gameObject.transform.position.x;
+
+        ani.SetFloat("Speed", rb.velocity.x/5);
  
         if (distance > maxdistance || distance < -maxdistance)
         {
