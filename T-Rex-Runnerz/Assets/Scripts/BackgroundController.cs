@@ -15,7 +15,7 @@ public class BackgroundController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         float distance = cam.transform.position.x * parralaxEffect;
         float movement = cam.transform.position.x * (1 - parralaxEffect);
