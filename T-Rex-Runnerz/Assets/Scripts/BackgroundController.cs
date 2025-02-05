@@ -7,6 +7,8 @@ public class BackgroundController : MonoBehaviour
     private float startPos, length;
     public GameObject cam;
     public float parralaxEffect;
+
+    //public bool isReversed
     // Start is called before the first frame update
     void Start()
     {
