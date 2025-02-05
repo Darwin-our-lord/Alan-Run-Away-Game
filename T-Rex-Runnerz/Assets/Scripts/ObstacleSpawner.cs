@@ -22,12 +22,11 @@ public class ObstacleSpawner : MonoBehaviour
 
     void CreateObstacle()
     {
-        GameObject clone = Instantiate(obstacles[Random.Range(0,obstacles.Length)],new Vector3(lastObsLocation + Random.Range(1,40), -3.9f,0),Quaternion.identity);
+        GameObject clone = Instantiate(obstacles[Random.Range(0,obstacles.Length)], new Vector3(lastObsLocation + Random.Range(1, 40), -3.9f,0),Quaternion.identity);
 
         lastObsLocation = clone.transform.position.x;
         if (clone.transform.position.x <= player.transform.position.x + 100)
         {
-
             CreateObstacle();
         }
     }
