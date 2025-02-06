@@ -35,9 +35,9 @@ public class CameraController : MonoBehaviour
         {
             zoomScale = 3;
         }
-        if (zoomScale > 11)
+        if (zoomScale > 10)
         {
-            zoomScale = 11;
+            zoomScale = 10;
         }
         cameraM.orthographicSize = zoomScale;
 

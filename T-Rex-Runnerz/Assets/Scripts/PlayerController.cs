@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,13 +18,15 @@ public class PlayerController : MonoBehaviour
     public GameObject winUI;
     public GameObject bananaPrefab;
 
-    float maxdistance = 45;
+    float maxdistance = 30;
     float walkSpeed = 0.02f;
     float jumpSpeed = 7f;
 
     bool canJump;
+    bool someoneWon = false;
     bool canThrow;
     Color startColor;
+    [SerializeField] private string[] scenesToLoad;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,8 +51,8 @@ public class PlayerController : MonoBehaviour
         {
             bool winnerplayer1 = player1.gameObject.transform.position.x > player2.gameObject.transform.position.x;
             Win(winnerplayer1);
+            someoneWon = true;
         }
-
         
         if (isPlayer1)
         {
@@ -64,6 +67,7 @@ public class PlayerController : MonoBehaviour
             {
                 rb.velocity = new Vector3(rb.velocity.x, jumpSpeed, rb.velocity.z);
                 canJump = false;
+                ani.SetBool("InAir", true);
             }
             if (Input.GetKey(KeyCode.F) && canThrow)
             {
@@ -88,6 +92,7 @@ public class PlayerController : MonoBehaviour
             {
                 rb.velocity = new Vector3(rb.velocity.x, jumpSpeed, rb.velocity.z);
                 canJump = false;
+                ani.SetBool("InAir", true);
             }
             if (Input.GetKey(KeyCode.S) && canThrow)
             {
@@ -106,11 +111,21 @@ public class PlayerController : MonoBehaviour
 
 
     }
+    void Update()
+    {
+        if (someoneWon && Input.GetKeyDown(KeyCode.D) || someoneWon && Input.GetKeyDown(KeyCode.A))
+        {
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(scenesToLoad[Random.Range(0,scenesToLoad.Length)]);
+            Time.timeScale = 1f;
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Floor") && !canJump)
         {
             canJump = true;
+            ani.SetBool("InAir", false);
         }
     }
 
@@ -130,8 +145,8 @@ public class PlayerController : MonoBehaviour
         winUI.SetActive(true);
         Time.timeScale = 0;
         
-        if (winnerPlayer1) winText.GetComponent<TMP_Text>().text = "player one won..";
-        if (!winnerPlayer1) winText.GetComponent<TMP_Text>().text = "player two won..";
+        if (winnerPlayer1) winText.GetComponent<TMP_Text>().text = "player one won!";
+        if (!winnerPlayer1) winText.GetComponent<TMP_Text>().text = "player two won!";
 
 
 
