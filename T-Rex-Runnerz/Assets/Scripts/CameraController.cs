@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
     GameObject player1;
     GameObject player2;
 
-    float duration = 0.3f;
+    float duration = 0.1f;
 
     // Start is called before the first frame update
     void Start()
@@ -62,7 +62,7 @@ public class CameraController : MonoBehaviour
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
-            transform.position = startPosition + Random.insideUnitSphere/2;
+            transform.position = startPosition + Random.insideUnitSphere/6;
             yield return null;
         }
         transform.position = startPosition;
