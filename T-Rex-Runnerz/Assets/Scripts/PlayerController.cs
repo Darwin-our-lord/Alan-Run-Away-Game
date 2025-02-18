@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
 
         StartCoroutine(waitAndBanana());
         startColor = this.gameObject.GetComponent<SpriteRenderer>().color;
-        winUI.active = false;
+        winUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -153,15 +153,11 @@ public class PlayerController : MonoBehaviour
 
     public void Win(bool winnerPlayer1)
     {
-        winUI.active = true;
+        winUI.SetActive(true);
         Time.timeScale = 0;
         
         if (winnerPlayer1) winText.text = "player one won!";
         if (!winnerPlayer1) winText.text = "player two won!";
-        Debug.LogWarning("Something evil is gonna happen")
-
-
-
-
+        
     }
 }

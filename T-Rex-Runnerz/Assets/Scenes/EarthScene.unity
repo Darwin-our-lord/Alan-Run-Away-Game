@@ -478,6 +478,22 @@ PrefabInstance:
       propertyPath: winText
       value: 
       objectReference: {fileID: 224609935}
+    - target: {fileID: 7387288227286235364, guid: 12cb2d1b0df8c6c45ae1f22a41101878, type: 3}
+      propertyPath: scenesToLoad.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7387288227286235364, guid: 12cb2d1b0df8c6c45ae1f22a41101878, type: 3}
+      propertyPath: scenesToLoad.Array.data[0]
+      value: MarsScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7387288227286235364, guid: 12cb2d1b0df8c6c45ae1f22a41101878, type: 3}
+      propertyPath: scenesToLoad.Array.data[1]
+      value: MoonScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7387288227286235364, guid: 12cb2d1b0df8c6c45ae1f22a41101878, type: 3}
+      propertyPath: scenesToLoad.Array.data[2]
+      value: EarthScene
+      objectReference: {fileID: 0}
     - target: {fileID: 7387288227286235370, guid: 12cb2d1b0df8c6c45ae1f22a41101878, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -6720,6 +6736,22 @@ PrefabInstance:
       propertyPath: winText
       value: 
       objectReference: {fileID: 224609935}
+    - target: {fileID: 5689920926125922573, guid: 5b8a9e2c01e8beb4abc9a5435ec2d5e7, type: 3}
+      propertyPath: scenesToLoad.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689920926125922573, guid: 5b8a9e2c01e8beb4abc9a5435ec2d5e7, type: 3}
+      propertyPath: scenesToLoad.Array.data[0]
+      value: MarsScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689920926125922573, guid: 5b8a9e2c01e8beb4abc9a5435ec2d5e7, type: 3}
+      propertyPath: scenesToLoad.Array.data[1]
+      value: MoonScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689920926125922573, guid: 5b8a9e2c01e8beb4abc9a5435ec2d5e7, type: 3}
+      propertyPath: scenesToLoad.Array.data[2]
+      value: EarthScene
+      objectReference: {fileID: 0}
     - target: {fileID: 5689920926125922574, guid: 5b8a9e2c01e8beb4abc9a5435ec2d5e7, type: 3}
       propertyPath: m_Name
       value: Player 1
