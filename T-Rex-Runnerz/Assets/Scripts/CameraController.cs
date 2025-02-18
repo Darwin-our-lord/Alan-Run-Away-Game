@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour
     void Update()
     {
 
-        float zoomScale = (player1.gameObject.transform.position.x - player2.gameObject.transform.position.x) / 3;
+        float zoomScale = (player1.gameObject.transform.position.x - player2.gameObject.transform.position.x) / 2;
 
         if (zoomScale < 0)
         {

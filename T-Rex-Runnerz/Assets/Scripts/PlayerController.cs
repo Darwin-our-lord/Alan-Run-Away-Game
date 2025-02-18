@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     public GameObject winUI;
     public GameObject bananaPrefab;
 
-    float maxdistance = 30;
+    float maxdistance = 35;
     float walkSpeed = 0.02f;
     float jumpSpeed = 7f;
 
@@ -82,7 +82,12 @@ public class PlayerController : MonoBehaviour
                 canThrow = false;
                 StartCoroutine(waitAndBanana());
             }
-                ani.SetBool("IsCrouch", Input.GetKey(KeyCode.F));
+            
+            ani.SetBool("IsCrouch", Input.GetKey(KeyCode.F));
+            
+            if (Input.GetKey(KeyCode.F)) rend.sortingOrder = 3;
+            else rend.sortingOrder = 3;
+                
         }
 
         if (!isPlayer1)
@@ -110,6 +115,9 @@ public class PlayerController : MonoBehaviour
 
             }   
             ani.SetBool("IsCrouch", Input.GetKey(KeyCode.D));
+
+            if (Input.GetKey(KeyCode.D)) rend.sortingOrder = 3;
+            else rend.sortingOrder = 3;
         }
 
         if (rb.velocity.x < 3)
