@@ -29,7 +29,7 @@ public class ObstacleSpawner : MonoBehaviour
         if (random == 0) location=-4.2f;
         if (random == 1) location = -3.8f;
 
-        GameObject clone = Instantiate(obstacles[random], new Vector3(lastObsLocation + Random.Range(1, 40), location ,0),Quaternion.identity);
+        GameObject clone = Instantiate(obstacles[random], new Vector3(lastObsLocation + Random.Range(1, 20), location ,0),Quaternion.identity);
 
         lastObsLocation = clone.transform.position.x;
         if (clone.transform.position.x <= player.transform.position.x + 100)
