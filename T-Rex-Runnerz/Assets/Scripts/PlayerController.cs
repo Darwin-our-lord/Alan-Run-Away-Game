@@ -154,10 +154,11 @@ public class PlayerController : MonoBehaviour
     public void Win(bool winnerPlayer1)
     {
         winUI.SetActive(true);
-        Time.timeScale = 0;
+        Time.timeScale = 0.03f;
+        someoneWon = true;
         
         if (winnerPlayer1) winText.text = "player one won!";
         if (!winnerPlayer1) winText.text = "player two won!";
-        
+        Debug.Log(someoneWon);
     }
 }
