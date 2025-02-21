@@ -28,6 +28,8 @@ public class ObstacleSpawner : MonoBehaviour
 
         if (random == 0) location=-4.2f;
         if (random == 1) location = -3.2f;
+        if (random == 2) location=-4.2f;
+        if (random == 3) location=-4.2f;
 
         GameObject clone = Instantiate(obstacles[random], new Vector3(lastObsLocation + Random.Range(1, 20), location ,0),Quaternion.identity);
 
