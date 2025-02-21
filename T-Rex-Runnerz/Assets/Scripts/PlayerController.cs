@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     float maxdistance = 35;
     float walkSpeed = 0.02f;
     float jumpSpeed = 7f;
+    float jumpDivid = 1.2f;
 
     bool canJump;
     bool someoneWon = false;
@@ -76,6 +77,12 @@ public class PlayerController : MonoBehaviour
                 canJump = false;
                 ani.SetBool("InAir", true);
             }
+           
+            if (!Input.GetKey(KeyCode.S) && rb.velocity.y > 0.1)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y / jumpDivid, rb.velocity.z);
+            }
+
             if (Input.GetKey(KeyCode.UpArrow) && canThrow)
             {
                 Instantiate(bananaPrefab, new Vector3(transform.position.x, -4.45f, 0), Quaternion.identity);
@@ -107,6 +114,12 @@ public class PlayerController : MonoBehaviour
                 canJump = false;
                 ani.SetBool("InAir", true);
             }
+
+            if (!Input.GetKey(KeyCode.A) && rb.velocity.y > 0.1)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y / jumpDivid, rb.velocity.z);
+            }
+
             if (Input.GetKey(KeyCode.G) && canThrow)
             {
                 Instantiate(bananaPrefab, new Vector3(transform.position.x, -3.65f, 1), Quaternion.identity);
